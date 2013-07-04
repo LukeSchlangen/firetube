@@ -2,7 +2,7 @@ var commentsRef = new Firebase('https://firetube.firebaseio.com/comments');
 var myUserID = null;
 
 //Create an Firebase Simple Login client so we can do Facebook auth
-var authClient = new FirebaseAuthClient(commentsRef, function(error, user) {
+var auth = new FirebaseSimpleLogin(commentsRef, function(error, user) {
   if(user) {
     myUserID = user.id;
     $("#loginDiv").text(user.first_name + " " + user.last_name);
@@ -42,5 +42,5 @@ last10Comments.on("child_removed", function(snapshot) {
 
 //Handle Login
 function onLoginButtonClicked() {
-  authClient.login("facebook");
+  auth.login("facebook");
 }
