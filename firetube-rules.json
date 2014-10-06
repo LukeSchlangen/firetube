@@ -5,12 +5,12 @@
       "$commentID": {
         ".write": "auth != null && !data.exists()",
         ".validate": "newData.hasChildren(['userid', 'body'])",
-	"body": {
-	  ".validate":"newData.isString()"
-	},
-	"userid": {
-          ".validate":"newData.val() == auth.id"
-	}
+      	"body": {
+      	  ".validate":"newData.isString()"
+      	},
+      	"userid": {
+          ".validate":"(newData.val() == auth.id) || (('facebook:' + newData.val()) == auth.uid)"
+      	}
       }
     }
   }
